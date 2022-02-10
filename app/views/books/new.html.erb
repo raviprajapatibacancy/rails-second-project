@@ -1,0 +1,24 @@
+<h1>Add new book</h1>
+
+<%= form_tag :action => 'create', :html => {:multipart => true } do |f| %>
+<p><label for = "book_title">Title</label>:
+
+<%= text_field 'books', 'title', class: 'form-control' %></p>
+<p><label for = "book_price">Price</label>:
+<%= text_field 'books', 'price', class: 'form-control' %></p>
+
+<p><label for = "book_subject_id">Subject</label>:
+<%= collection_select(:books, :subject_id, @subjects, :id, :name, {:prompt=> true}, {:class=>'form-control'}) %></p>
+
+<p><label for = "book_subject_id">Author</label>:
+<%= collection_select(:books, :author_id, @authors, :id, :name, {:prompt=> true}, {:class=>'form-control'}) %></p>
+
+<p><label for = "book_description">Description</label><br/>
+<%= text_area 'books', 'description', class: 'form-control' %></p>
+
+<%= file_field 'books', :image, class: 'form-control' %></p>
+
+<%= submit_tag "Create" %>
+
+<% end -%>
+<%= link_to 'Back', {:action => 'list'} %>
